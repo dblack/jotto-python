@@ -11,3 +11,6 @@ class Game():
 			raise WordLengthException()
 
 		return len([n for n in range(0,5) if word1[n] == word2[n]])
+
+	def winnow_dictionary(self, word, count):
+		self.dictionary = [w for w in self.dictionary if self.matching_letter_count(word, w) != count ]

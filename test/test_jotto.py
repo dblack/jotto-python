@@ -31,3 +31,8 @@ class JottoTestCase(unittest.TestCase):
 		dict = self.game.dictionary
 		over_five = [word for word in dict if len(word.strip()) > 5]
 		self.assertEqual(len(over_five), 0)
+
+	def test_winnow_dictionary(self):
+		self.game.dictionary = ['haunt', 'sense', 'strip', 'every']
+		self.game.winnow_dictionary('house', 2)
+		self.assertEqual(['strip', 'every'], self.game.dictionary)
