@@ -35,4 +35,4 @@ class JottoTestCase(unittest.TestCase):
 	def test_winnow_dictionary(self):
 		self.game.dictionary = ['haunt', 'sense', 'strip', 'every']
 		self.game.winnow_dictionary('house', 2)
-		self.assertEqual(['strip', 'every'], self.game.dictionary)
+		self.assertEqual(['haunt', 'sense'], self.game.dictionary)
