@@ -1,6 +1,6 @@
 import unittest
 import jotto
-from jotto.jotto import matching_letter_count
+from jotto.jotto import matching_letter_count, load_dictionary
 
 class JottoTestCase(unittest.TestCase):
 	def test_matching_letter_count(self):
@@ -22,3 +22,8 @@ class JottoTestCase(unittest.TestCase):
 		"""Raise exception if word too long"""
 
 		self.assertRaises(jotto.jotto.WordLengthException, jotto.jotto.matching_letter_count, 'house', 'building')
+
+	def test_dictionary_words_are_all_five_letters(self):
+		dict = load_dictionary("jotto/fives")
+		over_five = [word for word in dict if len(word.strip()) > 5]
+		self.assertEqual(len(over_five), 0)
