@@ -1,25 +1,11 @@
 import unittest
-from jotto.jotto import Game
-import jotto.utils
+import jotto
+from jotto import game
+from jotto import utils
 
 class JottoTestCase(unittest.TestCase):
 	def setUp(self):
-		self.game = Game()
-
-	def test_matching_letter_count(self):
-		"""How many matches are there between words?"""
-
-		self.assertEqual(jotto.utils.matching_letter_count('house', 'haunt'), 2)
-
-	def test_zero_letters_match(self):
-		"""No letters match positionally"""
-
-		self.assertEqual(jotto.utils.matching_letter_count('house', 'strip'), 0)
-
-	def test_word_length_exception_for_short_words(self):
-		"""Raise exception if word too short"""
-
-		self.assertRaises(jotto.utils.WordLengthException, jotto.utils.matching_letter_count, 'house', 'huh')
+		self.game = jotto.game.Game()
 
 	def test_word_length_exception_for_long_words(self):
 		"""Raise exception if word too long"""

@@ -1,2 +1,3 @@
-import jotto
-jotto.Game().play()
+import game
+
+game.Game().play()

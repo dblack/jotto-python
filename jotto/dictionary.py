@@ -1,3 +1,5 @@
+import random
+
 class Dictionary():
 	def __init__(self, filename="jotto/fives"):
 		with open(filename) as fh:
