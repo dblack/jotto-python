@@ -1,28 +1,26 @@
 import random
+from utils import *
 
-class WordLengthException(Exception):
+class Dictionary():
+	def __init__(self, filename="jotto/fives"):
+		self.words = [w.strip() for w in open(filename).readlines()]
+
+	def random_word(self):
+		return random.choice(self.words)
+
+class DictionaryOwner():
 	def __init__(self):
-		Exception.__init__(self, "Jotto words have to have exactly five letters")
+		self.dictionary = Dictionary()
 
-class Game():
-	def load_dictionary(self, filename="fives"):
-		self.dictionary = [w.strip() for w in open(filename).readlines()]
-		self.players_dictionary = self.dictionary[:]
+class Player():
+	pass
 
+class Computer(DictionaryOwner, Player):
 	def choose_my_word(self):
-		self.my_word = random.choice(self.dictionary)
-
-	def matching_letter_count(self, word1, word2):
-		if len(word1) != 5 or len(word2) != 5:
-			raise WordLengthException()
-
-		return len([n for n in range(0,5) if word1[n] == word2[n]])
+		self.my_word = self.dictionary.random_word()
 
 	def winnow_dictionary(self, word, count):
-		self.dictionary = [w for w in self.dictionary if self.matching_letter_count(word, w) == count]
-
-	def get_guess_from_player(self):
-		self.player_guess = input("Your guess: ")
+		self.dictionary.words = [w for w in self.dictionary.words if matching_letter_count(word, w) == count]
 
 	def guess_players_word(self):
 		self.choose_my_word()
@@ -30,8 +28,19 @@ class Game():
 		self.winnow_dictionary(self.my_word, count)
 		return count
 
+class Human(DictionaryOwner, Player):
+	pass
+
+class Game():
+	def __init__(self):
+		self.computer = Computer()
+		self.human = Human()
+
+	def get_guess_from_player(self):
+		self.player_guess = input("Your guess: ")
+
 	def play(self):
-		self.load_dictionary()
+		count = 0
 		while count != 5:
-			count = self.guess_players_word()
+			count = self.computer.guess_players_word()
 		print("I win")
