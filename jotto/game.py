@@ -1,5 +1,4 @@
-import random
-import player
+from jotto import player
 
 class Game():
 	def __init__(self):
