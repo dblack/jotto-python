@@ -1,4 +1,4 @@
-from jotto import utils, dictionary
+import utils, dictionary
 
 class Player():
 	pass
