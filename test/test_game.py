@@ -1,5 +1,4 @@
 import unittest
-import jotto
 import jotto.game
 import jotto.utils
 
