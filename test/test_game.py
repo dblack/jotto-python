@@ -1,7 +1,7 @@
 import unittest
 import jotto
-from jotto import game
-from jotto import utils
+import jotto.game
+import jotto.utils
 
 class JottoTestCase(unittest.TestCase):
 	def setUp(self):
