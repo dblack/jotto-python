@@ -17,3 +17,9 @@ class UtilsTestCase(unittest.TestCase):
 
 		self.assertRaises(jotto.utils.WordLengthException, jotto.utils.matching_letter_count, 'house', 'huh')
 
+	def test_word_length_exception_for_long_words(self):
+		"""Raise exception if word too long"""
+
+		self.assertRaises(jotto.utils.WordLengthException, jotto.utils.matching_letter_count, 'house', 'building')
+
+
