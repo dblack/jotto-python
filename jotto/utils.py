@@ -6,4 +6,4 @@ def matching_letter_count(word1, word2):
     if len(word1) != 5 or len(word2) != 5:
         raise WordLengthException()
 
-    return len([n for n in range(0,5) if word1[n] == word2[n]])
+    return len([t for t in zip(word1, word2) if t[0] == t[1]])
