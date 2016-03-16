@@ -7,7 +7,7 @@ Jotto is a word-guessing game. You try to guess the computer's secret five-lette
 To play:
 
     cd jotto-python
-    python jotto/main.py
+    python jotto/jotto.py
 
 When prompted, put in a guess of the computer's word (always five letters). The computer will respond with
 how many letters you got right. NOTE: position does count. 
