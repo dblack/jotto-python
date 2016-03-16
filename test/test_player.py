@@ -1,5 +1,5 @@
 import unittest
-import player
+from jotto import player
 
 class ComputerTestCase(unittest.TestCase):
     def setUp(self):

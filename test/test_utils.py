@@ -1,5 +1,5 @@
 import unittest
-import utils
+from jotto import utils
 
 class UtilsTestCase(unittest.TestCase):
     def test_matching_letter_count(self):

@@ -1,6 +1,6 @@
 import unittest
-import game
-import dictionary
+from jotto import game
+from jotto import dictionary
 
 class DictionaryTestCase(unittest.TestCase):
     def setUp(self):
