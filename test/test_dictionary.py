@@ -1,10 +1,10 @@
 import unittest
-import jotto.game
-import jotto.dictionary
+import game
+import dictionary
 
-class JottoTestCase(unittest.TestCase):
+class DictionaryTestCase(unittest.TestCase):
     def setUp(self):
-        self.dictionary = jotto.dictionary.Dictionary()
+        self.dictionary = dictionary.Dictionary()
 
     def test_dictionary_words_are_all_five_letters(self):
         dict = self.dictionary.words
