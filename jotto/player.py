@@ -1,11 +1,9 @@
 import utils, dictionary
 
-class Player(dictionary.DictionaryOwner):
-    pass
-
-class Computer(Player):
+class Computer(dictionary.DictionaryOwner):
     def __init__(self):
         super(self.__class__, self).__init__()
+
         self.guessed_players_word = False
         self.human_guess = ""
 
@@ -16,7 +14,7 @@ class Computer(Player):
         self.word = self.choose_a_word()
 
     def valid_player_guess(self):
-        return len(self.player_guess) == 5 and self.player_guess in(self.reference_dictionary.words)
+        return len(self.player_guess) == 5 and self.player_guess in(dictionary.Dictionary.reference_list)
 
     def get_guess_from_player(self):
         self.player_guess = raw_input("Your guess: ")
@@ -33,6 +31,3 @@ class Computer(Player):
 
         self.dictionary.winnow(guess, count)
         self.guessed_players_word = count == 5
-
-class Human(Player):
-    pass

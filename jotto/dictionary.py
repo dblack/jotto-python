@@ -2,9 +2,11 @@ import random
 import utils
 
 class Dictionary():
+    with open("jotto/fives") as fh:
+        reference_list = [w.strip() for w in fh]
+
     def __init__(self, filename="jotto/fives"):
-        with open(filename) as fh:
-            self.words = [w.strip() for w in fh]
+        self.words = Dictionary.reference_list[:]
 
     def random_word(self):
         return random.choice(self.words)
@@ -15,4 +17,3 @@ class Dictionary():
 class DictionaryOwner(object):
     def __init__(self):
         self.dictionary = Dictionary()
-        self.reference_dictionary = Dictionary()

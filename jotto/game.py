@@ -3,7 +3,6 @@ import player
 class Game():
     def __init__(self):
         self.computer = player.Computer()
-        self.human = player.Human()
         self.computer.choose_secret_word()
 
     def computer_wins(self):
