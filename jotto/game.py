@@ -1,23 +1,27 @@
-import player, utils
+import player
 
 class Game():
     def __init__(self):
         self.computer = player.Computer()
         self.human = player.Human()
+        self.computer.choose_secret_word()
+
+    def computer_wins(self):
+        return self.computer.guessed_players_word
+
+    def human_wins(self):
+        return self.computer.human_guess == self.computer.word
+
+    def no_winner(self):
+        return not self.computer_wins() and not self.human_wins()
 
     def play(self):
-        self.computer.word = self.computer.choose_a_word()
-        count = 0
-        self.player_guess = ""
-        player_wins = False
-
-        while (count != 5) and (player_wins == False):
+        while self.no_winner():
             self.computer.get_guess_from_player()
-            print(utils.matching_letter_count(self.computer.player_guess, self.computer.word))
-            player_wins = self.computer.player_guess == self.computer.word
-            count = self.computer.guess_players_word()
+            self.computer.report_hits()
+            self.computer.guess_players_word()
 
-        if player_wins:
+        if self.human_wins():
             print("You win!")
         else:
             print("I win! My word was " + self.computer.word)

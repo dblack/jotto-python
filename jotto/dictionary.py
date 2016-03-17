@@ -12,6 +12,7 @@ class Dictionary():
     def winnow(self, word, count):
         self.words = [w for w in self.words if utils.matching_letter_count(word, w) == count]
 
-class DictionaryOwner():
+class DictionaryOwner(object):
     def __init__(self):
         self.dictionary = Dictionary()
+        self.reference_dictionary = Dictionary()
