@@ -12,18 +12,21 @@ class Game():
     def human_wins(self):
         return self.humans_current_guess == self.computer.secret_word
 
-    def no_winner(self):
+    def game_in_progress(self):
         return not self.computer_wins() and not self.human_wins()
 
+    def tie(self):
+        return self.human_wins() and self.computer_wins()
+
     def play(self):
-        while self.no_winner():
-            self.humans_current_guess = self.human.guess_computers_word()
-            self.computer.report_hits(self.humans_current_guess)
+        while self.game_in_progress():
+            self.human.guess_computers_word()
+            self.computer.report_hits(self.human.current_guess)
             self.computer.guess_players_word()
 
-        if self.human_wins() and self.computer_wins():
-            print("Tie!")
+        if self.tie():
+            print "Tie!"
         elif self.human_wins():
-            print("You win!")
+            print "You win!"
         else:
-            print("I win! My word was " + self.computer.secret_word)
+            print "I win! My word was " + self.computer.secret_word
