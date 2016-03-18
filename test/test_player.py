@@ -3,14 +3,14 @@ from jotto import player
 
 class ComputerTestCase(unittest.TestCase):
     def setUp(self):
-        self.computer = player.Computer()
+        self.human = player.Human()
 
     def test_valid_player_guess(self):
-        self.computer.player_guess = "tiny"
-        self.assertEqual(self.computer.valid_player_guess(), False)
+        self.human.current_guess = "tiny"
+        self.assertEqual(self.human.valid_guess(), False)
 
-        self.computer.player_guess = "lengthy"
-        self.assertEqual(self.computer.valid_player_guess(), False)
+        self.human.current_guess = "lengthy"
+        self.assertEqual(self.human.valid_guess(), False)
 
-        self.computer.player_guess = "right"
-        self.assertEqual(self.computer.valid_player_guess(), True)       
+        self.human.current_guess = "right"
+        self.assertEqual(self.human.valid_guess(), True)       
