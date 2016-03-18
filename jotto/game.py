@@ -10,7 +10,7 @@ class Game():
         return self.computer.guessed_humans_word
 
     def human_wins(self):
-        return self.humans_current_guess == self.computer.secret_word
+        return self.humans_current_guess is self.computer.secret_word
 
     def game_in_progress(self):
         return not self.computer_wins() and not self.human_wins()

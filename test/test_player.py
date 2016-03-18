@@ -1,11 +1,13 @@
 import unittest
+import sys
+import StringIO
 from jotto import player
 
-class ComputerTestCase(unittest.TestCase):
+class HumanTestCase(unittest.TestCase):
     def setUp(self):
         self.human = player.Human()
 
-    def test_valid_player_guess(self):
+    def test_valid_guess(self):
         self.human.current_guess = "tiny"
         self.assertEqual(self.human.valid_guess(), False)
 

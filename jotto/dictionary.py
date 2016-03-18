@@ -11,8 +11,8 @@ class Dictionary():
     def random_word(self):
         return random.choice(self.words)
 
-    def winnow(self, word, count):
-        self.words = [w for w in self.words if utils.matching_letter_count(word, w) == count]
+    def winnow(self, guess, count):
+        self.words = [word for word in self.words if utils.matching_letter_count(word, guess) == count]
 
 class DictionaryOwner(object):
     def __init__(self):

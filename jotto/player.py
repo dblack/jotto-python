@@ -5,7 +5,7 @@ class Player(object):
 
 class Human(Player):
     def valid_guess(self):
-        return len(self.current_guess) == 5 and self.current_guess in(dictionary.Dictionary.reference_list)
+        return len(self.current_guess) is 5 and self.current_guess in(dictionary.Dictionary.reference_list)
 
     def guess_computers_word(self):
         self.current_guess = raw_input("Your guess: ")
