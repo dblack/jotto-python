@@ -7,7 +7,7 @@ class Game():
         self.humans_current_guess = ""
 
     def computer_wins(self):
-        return self.computer.guessed_players_word
+        return self.computer.guessed_humans_word
 
     def human_wins(self):
         return self.humans_current_guess == self.computer.secret_word
@@ -22,7 +22,7 @@ class Game():
         while self.game_in_progress():
             self.human.guess_computers_word()
             self.computer.report_hits(self.human.current_guess)
-            self.computer.guess_players_word()
+            self.computer.guess_humans_word()
 
         if self.tie():
             print "Tie!"

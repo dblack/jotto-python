@@ -16,7 +16,7 @@ class Human(Player):
 class Computer(Player, dictionary.DictionaryOwner):
     def __init__(self):
         super(self.__class__, self).__init__()
-        self.guessed_players_word = False
+        self.guessed_humans_word = False
         self.secret_word = self.choose_a_word()
 
     def choose_a_word(self):
@@ -25,9 +25,9 @@ class Computer(Player, dictionary.DictionaryOwner):
     def report_hits(self, guess):
         print utils.matching_letter_count(guess, self.secret_word)
 
-    def guess_players_word(self):
+    def guess_humans_word(self):
         guess = self.choose_a_word()
         count = int(raw_input(guess + ": "))
 
         self.dictionary.winnow(guess, count)
-        self.guessed_players_word = count == 5
+        self.guessed_humans_word = count == 5
