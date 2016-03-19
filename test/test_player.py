@@ -1,37 +1,29 @@
 import unittest
 import sys
+import __builtin__
+from mock import patch
 from StringIO import StringIO
 from jotto import player
-from contextlib import contextmanager
 
 class HumanTestCase(unittest.TestCase):
     def setUp(self):
         self.human = player.Human()
 
-    def test_guess_to_short_a_word(self):
-        self.guess_a_word("tiny")
+    @patch('__builtin__.raw_input', side_effect = ['tiny', 'right'])
+    def test_guess_too_short_a_word(self, input):
+        self.guess_a_word()
 
-    def test_guess_too_long_a_word(self):
-        self.guess_a_word("lengthy")
+    @patch('__builtin__.raw_input', side_effect = ['lengthy', 'right'])
+    def test_guess_too_long_a_word(self, input):
+        self.guess_a_word()
 
-    def test_guess_a_nonexistent_word(self):
-        self.guess_a_word("blaha")
+    @patch('__builtin__.raw_input', side_effect = ['blaha', 'right'])
+    def test_guess_a_nonexistent_word(self, input):
+        self.guess_a_word()
 
-    def guess_a_word(self, word):
-        with self.switch_io(word + "\nright") as output_stream:
+    def guess_a_word(self):
+        with patch('sys.stdout', new=StringIO()) as temp_out:
             self.human.guess_computers_word()
- 
-        self.assertEqual(output_stream.read(), "Your guess: Five-letter words from the dictionary only\nYour guess: ")
+
         self.assertEqual(self.human.current_guess, "right")
-
-    @contextmanager
-    def switch_io(self, input_string):
-        sys.stdin = StringIO(input_string)
-        output_stream = StringIO()
-        sys.stdout = output_stream
-
-        yield output_stream
-
-        output_stream.seek(0)
-        sys.stdin = sys.__stdin__
-        sys.stdout = sys.__stdout__
+        self.assertEqual(temp_out.getvalue(), "Five-letter words from the dictionary only\n")
