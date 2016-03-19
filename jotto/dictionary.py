@@ -7,10 +7,9 @@ class Dictionary():
         self.filters = []
 
     def __len__(self):
-        my_len = 0
-        for word in self:
-            my_len += 1
-        return my_len
+        for index, word in enumerate(self, 1):
+            pass
+        return index
 
     def __iter__(self):
         def include_word(word):
