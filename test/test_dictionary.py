@@ -6,9 +6,8 @@ class DictionaryTestCase(unittest.TestCase):
         self.dictionary = dictionary.Dictionary()
 
     def test_dictionary_words_are_all_five_letters(self):
-        dict = self.dictionary.words
-        over_five = [word for word in dict if len(word.strip()) > 5]
-        self.assertEqual(len(over_five), 0)
+        not_five_letter_words = [word for word in self.dictionary.words if len(word.strip()) is not 5]
+        self.assertFalse(not_five_letter_words)
 
     def test_winnow_dictionary(self):
         self.dictionary.words = ['haunt', 'sense', 'strip', 'every']
