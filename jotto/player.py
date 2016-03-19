@@ -3,10 +3,7 @@ import utils, dictionary
 class Player(object):
     pass
 
-class Human(Player):
-    def __init__(self):
-        self.dictionary = dictionary.Dictionary()
-
+class Human(Player, dictionary.DictionaryOwner):
     def valid_guess(self):
         return len(self.current_guess) is 5 and self.current_guess in(self.dictionary)
 
