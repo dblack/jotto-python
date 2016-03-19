@@ -9,17 +9,10 @@ class HumanTestCase(unittest.TestCase):
     def setUp(self):
         self.human = player.Human()
 
-    @patch('__builtin__.raw_input', side_effect = ['tiny', 'right'])
-    def test_guess_too_short_a_word(self, input):
-        self.guess_a_word()
-
-    @patch('__builtin__.raw_input', side_effect = ['lengthy', 'right'])
-    def test_guess_too_long_a_word(self, input):
-        self.guess_a_word()
-
-    @patch('__builtin__.raw_input', side_effect = ['blaha', 'right'])
-    def test_guess_a_nonexistent_word(self, input):
-        self.guess_a_word()
+    def test_guess_unacceptable_words(self):
+        for word in ('tiny', 'lengthy', 'blaha'):
+            with patch('__builtin__.raw_input', side_effect=(word, 'right')):
+                self.guess_a_word()
 
     def guess_a_word(self):
         with patch('sys.stdout', new=StringIO()) as temp_out:
