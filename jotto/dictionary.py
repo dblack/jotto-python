@@ -22,7 +22,7 @@ class Dictionary():
 
         with open(self.filename) as fh:
             for word in fh:
-                word = word.rstrip()
+                word = word.strip()
                 if include_word(word):
                     yield(word)
 
