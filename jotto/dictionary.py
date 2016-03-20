@@ -33,7 +33,8 @@ class Dictionary():
                 return word
 
     def winnow(self, guess, count):
-        self.filters.append((guess, count))
+        if count > 0:
+            self.filters.append((guess, count))
 
 class DictionaryOwner(object):
     def __init__(self):
