@@ -23,7 +23,7 @@ class Computer(Player, dictionary.DictionaryOwner):
         return self.dictionary.random_word()
 
     def report_hits(self, guess):
-        print utils.matching_letter_count(guess, self.secret_word)
+        return utils.matching_letter_count(guess, self.secret_word)
 
     def guess_humans_word(self):
         guess = self.choose_a_word()

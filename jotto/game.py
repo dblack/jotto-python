@@ -21,7 +21,7 @@ class Game():
     def play(self):
         while self.game_in_progress():
             self.human.guess_computers_word()
-            self.computer.report_hits(self.human.current_guess)
+            print self.computer.report_hits(self.human.current_guess)
             self.computer.guess_humans_word()
 
         if self.tie():
