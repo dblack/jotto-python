@@ -13,12 +13,10 @@ class Dictionary():
 
     def __iter__(self):
         def include_word(word):
-            include = True
             for guess, count in self.filters:
                 if utils.matching_letter_count(word, guess) is not count:
-                    include = False
-                    break
-            return include
+                    return False
+            return True
 
         with open(self.filename) as fh:
             for word in fh:
