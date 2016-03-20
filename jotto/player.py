@@ -4,8 +4,14 @@ class Player(object):
     pass
 
 class Human(Player, dictionary.DictionaryOwner):
+    def guess_has_five_letters(self):
+        return len(self.current_guess) is 5
+
+    def guess_is_in_dictionary(self):
+        return self.current_guess in(self.dictionary)
+
     def valid_guess(self):
-        return len(self.current_guess) is 5 and self.current_guess in(self.dictionary)
+        return self.guess_has_five_letters() and self.guess_is_in_dictionary()
 
     def guess_computers_word(self):
         self.current_guess = raw_input("Your guess: ")
