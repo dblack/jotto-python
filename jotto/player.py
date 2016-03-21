@@ -1,9 +1,9 @@
 import utils, dictionary
 
-class Player(object):
+class Player(dictionary.DictionaryOwner):
     pass
 
-class Human(Player, dictionary.DictionaryOwner):
+class Human(Player):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.current_guess = ""
@@ -26,7 +26,7 @@ class Human(Player, dictionary.DictionaryOwner):
             print "Five-letter words from the dictionary only"
             self.guess_a_word(raw_input("Your guess: "))
 
-class Computer(Player, dictionary.DictionaryOwner):
+class Computer(Player):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.guessed_humans_word = False
