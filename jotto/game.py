@@ -4,13 +4,12 @@ class Game():
     def __init__(self):
         self.computer = player.Computer()
         self.human = player.Human()
-        self.humans_current_guess = ""
 
     def computer_wins(self):
         return self.computer.guessed_humans_word
 
     def human_wins(self):
-        return self.humans_current_guess is self.computer.secret_word
+        return self.human.current_guess is self.computer.secret_word
 
     def game_in_progress(self):
         return not self.computer_wins() and not self.human_wins()
