@@ -4,6 +4,10 @@ class Player(object):
     pass
 
 class Human(Player, dictionary.DictionaryOwner):
+    def __init__(self):
+        super(self.__class__, self).__init__()
+        self.current_guess = ""
+
     def guess_has_five_letters(self):
         return len(self.current_guess) is 5
 
@@ -13,11 +17,14 @@ class Human(Player, dictionary.DictionaryOwner):
     def valid_guess(self):
         return self.guess_has_five_letters() and self.guess_is_in_dictionary()
 
+    def guess_a_word(self, word):
+        self.current_guess = word
+
     def guess_computers_word(self):
-        self.current_guess = raw_input("Your guess: ")
+        self.guess_a_word(raw_input("Your guess: "))
         while not self.valid_guess():
             print "Five-letter words from the dictionary only"
-            self.current_guess = raw_input("Your guess: ")
+            self.guess_a_word(raw_input("Your guess: "))
 
 class Computer(Player, dictionary.DictionaryOwner):
     def __init__(self):
