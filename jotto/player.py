@@ -29,8 +29,7 @@ class Human(Player):
             if self.valid_guess():
                 break
             else:
-                print "Five letter words from the dictionary only"
-
+                print "Five-letter words from the dictionary only"
 
 class Computer(Player):
     def __init__(self):
@@ -44,9 +43,12 @@ class Computer(Player):
     def report_hits(self, guess):
         return utils.matching_letter_count(guess, self.secret_word)
 
+    def get_count_from_human(self, guess):
+        return int(raw_input(guess + ": "))
+
     def guess_humans_word(self):
         guess = self.choose_a_word()
-        count = int(raw_input(guess + ": "))
+        count = self.get_count_from_human(guess)
 
         self.dictionary.winnow(guess, count)
         self.guessed_humans_word = count == 5
