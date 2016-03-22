@@ -1,4 +1,5 @@
 import utils, dictionary
+from keyboard_io import KeyboardIO
 
 class Player(dictionary.DictionaryOwner):
     pass
@@ -21,11 +22,12 @@ class Human(Player):
         self.current_guess = word
 
     def see_prompt_and_enter_guess(self):
-        self.guess_a_word(raw_input("Your guess: "))
+        self.guess_a_word(KeyboardIO.get_input("Your guess: "))
 
     def guess_computers_word(self):
         while True:
             self.see_prompt_and_enter_guess()
+
             if self.valid_guess():
                 break
             else:
@@ -44,7 +46,7 @@ class Computer(Player):
         return utils.matching_letter_count(guess, self.secret_word)
 
     def get_count_from_human(self, guess):
-        return int(raw_input(guess + ": "))
+        return int(KeyboardIO.get_input(guess + ": "))
 
     def guess_humans_word(self):
         guess = self.choose_a_word()
