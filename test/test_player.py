@@ -1,6 +1,6 @@
 import unittest
 import sys
-import __builtin__
+from __builtin__ import raw_input
 from mock import patch
 from StringIO import StringIO
 from jotto import player
@@ -10,8 +10,9 @@ class HumanTestCase(unittest.TestCase):
         self.human = player.Human()
 
     def test_guess_unacceptable_words(self):
-        for word in ('tiny', 'lengthy', 'blaha'):
-            with patch('__builtin__.raw_input', side_effect=(word, 'right')):
+        good_word = 'right'
+        for bad_word in ('tiny', 'lengthy', 'blaha'):
+            with patch('__builtin__.raw_input', side_effect=(bad_word, good_word)):
                 self.guess_a_word()
 
     def guess_a_word(self):
