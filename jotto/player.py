@@ -20,11 +20,17 @@ class Human(Player):
     def guess_a_word(self, word):
         self.current_guess = word
 
-    def guess_computers_word(self):
+    def see_prompt_and_enter_guess(self):
         self.guess_a_word(raw_input("Your guess: "))
-        while not self.valid_guess():
-            print "Five-letter words from the dictionary only"
-            self.guess_a_word(raw_input("Your guess: "))
+
+    def guess_computers_word(self):
+        while True:
+            self.see_prompt_and_enter_guess()
+            if self.valid_guess():
+                break
+            else:
+                print "Five letter words from the dictionary only"
+
 
 class Computer(Player):
     def __init__(self):
