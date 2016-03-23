@@ -1,5 +1,4 @@
 import random
-import utils
 
 class Dictionary():
     def __init__(self, filename="jotto/fives"):
@@ -14,7 +13,7 @@ class Dictionary():
     def __iter__(self):
         def include_word(word):
             for guess, count in self.filters:
-                if utils.matching_letter_count(word, guess) is not count:
+                if (guess.correct_letter_count(word)) is not count:
                     return False
             return True
 

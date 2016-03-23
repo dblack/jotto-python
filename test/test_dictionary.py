@@ -1,6 +1,6 @@
 import unittest
 import mock
-from jotto import game, dictionary
+from jotto import guess, game, dictionary
 
 class DictionaryTestCase(unittest.TestCase):
     def setUp(self):
@@ -11,6 +11,6 @@ class DictionaryTestCase(unittest.TestCase):
         self.assertFalse(list(not_five_letter_words))
 
     def test_winnow_dictionary(self):
-        self.dictionary.winnow('house', 5)
+        self.dictionary.winnow(guess.Guess('house'), 5)
         self.assertEqual(len(self.dictionary), 1)
         self.assertEqual('house', next(self.dictionary.__iter__()))

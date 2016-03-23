@@ -23,23 +23,3 @@ class HumanTestCase(unittest.TestCase):
         self.assertEqual(self.human.current_guess, "right")
         self.assertEqual(temp_out.getvalue(), "Five-letter words from the dictionary only\n")
 
-    def test_short_word_is_invalid(self):
-        self.human.dictionary = ['tiny', 'house', 'mouse', 'inset', 'bring']
-        self.human.guess_a_word('tiny')
-        self.assertFalse(self.human.valid_guess())
-
-    def test_long_word_is_invalid(self):
-        self.human.dictionary = ['lengthy', 'house', 'mouse', 'inset', 'bring']
-        self.human.guess_a_word('lengthy')
-        self.assertFalse(self.human.valid_guess())
-
-    def test_non_dictionary_word_is_invalid(self):
-        self.human.dictionary = ['house', 'mouse', 'inset', 'bring']
-        self.human.guess_a_word('touse')
-        self.assertFalse(self.human.valid_guess())
-
-    def test_five_letter_word_in_dictionary_is_valid(self):
-        self.human.dictionary = ['house', 'mouse', 'inset', 'bring']
-        self.human.guess_a_word('house')
-        self.assertTrue(self.human.valid_guess())
-
