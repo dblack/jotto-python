@@ -1,5 +1,5 @@
 import unittest
-from jotto import guess
+import guess
 
 class GuessTestCase(unittest.TestCase):
     def setUp(self):

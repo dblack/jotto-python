@@ -1,6 +1,6 @@
 import unittest
 import mock
-from jotto import guess, game, dictionary
+import guess, game, dictionary
 
 class DictionaryTestCase(unittest.TestCase):
     def setUp(self):

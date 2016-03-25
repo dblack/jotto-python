@@ -3,8 +3,8 @@ import sys
 from __builtin__ import raw_input
 from mock import patch
 from StringIO import StringIO
-from jotto import player
-from jotto.keyboard_io import KeyboardIO
+import player
+import keyboard_io
 
 class HumanTestCase(unittest.TestCase):
     def setUp(self):
@@ -13,7 +13,7 @@ class HumanTestCase(unittest.TestCase):
     def test_guess_unacceptable_words(self):
         good_word = 'right'
         for bad_word in ('tiny', 'lengthy', 'blaha'):
-            with patch('jotto.keyboard_io.KeyboardIO.get_input', side_effect=(bad_word, good_word)):
+            with patch('keyboard_io.KeyboardIO.get_input', side_effect=(bad_word, good_word)):
                 self.guess_a_word()
 
     def guess_a_word(self):
