@@ -24,7 +24,7 @@ class Game():
             self.computer.guess_humans_word()
 
         if self.tie():
-            print "Tie!"
+            print "It's a tie!"
         elif self.human_wins():
             print "You win!"
         else:
