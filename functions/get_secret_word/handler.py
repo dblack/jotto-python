@@ -13,4 +13,4 @@ log.setLevel(logging.DEBUG)
 def handler(event, context):
     log.debug("Received event {}".format(json.dumps(event)))
     secret_word = SecretWord(event)
-    return { 'word': secret_word.word(), 'index': secret_word.index() }
+    return { 'word': secret_word.word, 'index': secret_word.index }
