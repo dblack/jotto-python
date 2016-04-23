@@ -1,5 +1,5 @@
 {
-  "name": "take_computers_turn",
+  "name": "get_secret_word",
   "runtime": "python2.7",
   "description": "Serverless Lambda function for project: dblack-jotto",
   "customName": false,
@@ -13,16 +13,39 @@
   },
   "endpoints": [
     {
-      "path": "take_computers_turn",
+      "path": "get_secret_word/{index}",
       "method": "GET",
       "type": "AWS",
       "authorizationType": "none",
       "authorizerFunction": false,
       "apiKeyRequired": false,
       "requestParameters": {},
-      "requestTemplates": {
-        "application/json": ""
-      },
+      "requestTemplates": "$${apiGatewayRequestTemplate}",
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+    {
+      "path": "get_secret_word",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {},
       "responses": {
         "400": {
           "statusCode": "400"
