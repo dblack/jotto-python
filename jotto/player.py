@@ -34,7 +34,7 @@ class Computer(dictionary.DictionaryOwner):
         self.secret_word = self.choose_a_word()
 
     def choose_a_word(self):
-        raw_word = str(requests.get(url).text)
+        raw_word = requests.get(url).text
         return re.search(regex, raw_word).group()
 
     def report_hits(self, guess):

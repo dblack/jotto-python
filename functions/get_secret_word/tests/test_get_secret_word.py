@@ -2,6 +2,7 @@ import sys, os
 import pytest
 import requests
 import json
+from mock import patch
 
 from .. import secret_word
 
@@ -24,8 +25,7 @@ def test_getting_specific_word():
 
 def test_getting_random_word():
     response = requests.get(url)
-    response.encoding = 'ISO-8859-1'
     data = json.loads(response.text)
     index = data["index"]
-    print index
     assert words[int(index)] == data["word"]
+
