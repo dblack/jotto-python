@@ -6,7 +6,7 @@ class Scorer():
     def correct_letter_count(self, word, guess):
         return len([True for char1, char2 in zip(word, guess) if char1 == char2])
 
-    def load_dictionary(self, filename = 'fives.shuffled'):
+    def load_dictionary(self, filename = 'lib/fives.shuffled'):
         with open(filename) as fh:
             words = [word.rstrip() for word in fh.readlines()]
         return words    

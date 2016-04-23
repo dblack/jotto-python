@@ -4,7 +4,7 @@
   "description": "Serverless Lambda function for project: dblack-jotto",
   "customName": false,
   "customRole": false,
-  "handler": "handler.handler",
+  "handler": "get_secret_word/handler.handler",
   "timeout": 6,
   "memorySize": 1024,
   "authorizer": {},

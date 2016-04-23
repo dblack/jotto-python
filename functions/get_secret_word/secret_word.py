@@ -13,7 +13,7 @@ class SecretWord():
     def get_word(self):
         return self.words[self.index]
 
-    def load_dictionary(self, filename = 'fives.shuffled'):
+    def load_dictionary(self, filename = 'lib/fives.shuffled'):
         with open(filename) as fh:
             words = [word.rstrip() for word in fh.readlines()]
         return words    
