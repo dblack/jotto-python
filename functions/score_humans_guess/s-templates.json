@@ -1,0 +1,8 @@
+{
+  "apiGatewayRequestTemplate": {
+    "application/json": {
+      "pathIndex": "$input.params('index')",
+      "pathGuess": "$input.params('guess')"
+    }
+  }
+}

@@ -27,5 +27,4 @@ def test_getting_random_word():
     response = requests.get(url)
     data = json.loads(response.text)
     index = data["index"]
-    assert words[int(index)] == data["word"]
-
+    assert words[int(index)] == data["word"]    
