@@ -1,5 +1,12 @@
+
 import dictionary, guess
+import requests
+import re
+
 from keyboard_io import KeyboardIO
+
+regex = '\w{5}'
+url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/get_secret_word/'
 
 class Human():
     def __init__(self):
@@ -27,7 +34,8 @@ class Computer(dictionary.DictionaryOwner):
         self.secret_word = self.choose_a_word()
 
     def choose_a_word(self):
-        return self.dictionary.random_word()
+        raw_word = str(requests.get(url).text)
+        return re.search(regex, raw_word).group()
 
     def report_hits(self, guess):
         return guess.correct_letter_count(self.secret_word)

@@ -1,12 +1,15 @@
 from random import randint
 
 class SecretWord():
-    def __init__(self, event):
-        self.event = event
+    def __init__(self, data):
+        self.data = data
+        self.words = self.load_dictionary()
 
-    def get(self):
-        words = self.load_dictionary()
-        return words[int(self.event.get('pathIndex', randint(0, len(words) - 1)))]
+    def index(self):
+        return int(self.data.get('pathIndex', randint(0, len(self.words) - 1)))
+
+    def word(self):
+        return self.words[self.index()]
 
     def load_dictionary(self, filename = 'fives.shuffled'):
         with open(filename) as fh:
