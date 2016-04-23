@@ -6,13 +6,9 @@ class SecretWord():
 
     def get(self):
         words = self.load_dictionary()
-        if 'pathIndex' in self.event:
-            index = int(self.event['pathIndex'])
-        else:
-            index = randint(0, len(words) - 1)
-        return words[index]
+        return words[int(self.event.get('pathIndex', randint(0, len(words) - 1)))]
 
-    def load_dictionary(self):
-        with open('fives.shuffled') as fh:
+    def load_dictionary(self, filename = 'fives.shuffled'):
+        with open(filename) as fh:
             words = [word.rstrip() for word in fh.readlines()]
         return words    
