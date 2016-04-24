@@ -1,0 +1,7 @@
+{
+  "apiGatewayRequestTemplate": {
+    "application/json": {
+      "pathHistory": "$input.params('history')"
+    }
+  }
+}

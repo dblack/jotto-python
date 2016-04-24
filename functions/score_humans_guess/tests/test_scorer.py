@@ -2,7 +2,6 @@ import sys, os
 import pytest
 import requests
 import json
-from mock import patch
 
 from .. import scorer
 
