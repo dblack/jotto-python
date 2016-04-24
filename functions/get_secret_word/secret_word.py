@@ -15,5 +15,4 @@ class SecretWord():
 
     def load_dictionary(self, filename = 'lib/fives.shuffled'):
         with open(filename) as fh:
-            words = [word.rstrip() for word in fh.readlines()]
-        return words    
+            return [word.rstrip() for word in fh.readlines()]
