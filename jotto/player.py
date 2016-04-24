@@ -7,9 +7,10 @@ sys.path.insert(0, '../functions')
 import utils
 from keyboard_io import KeyboardIO
 
-secret_word_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/get_secret_word'
-score_guess_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/score_humans_guess'
-guess_word_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/guess_humans_word'
+base_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev'
+secret_word_url = base_url + '/get_secret_word'
+score_guess_url = base_url + '/score_humans_guess'
+guess_word_url = base_url + '/guess_humans_word'
 
 
 class Human():
@@ -26,9 +27,7 @@ class Computer():
         self.choose_a_word()
 
     def choose_a_word(self):
-        response = requests.get(secret_word_url)
-        response.encoding = 'ISO-8859-1'
-        data = json.loads(response.text)
+        data = utils.response_object(secret_word_url)
         self.secret_word = data["word"]
         self.word_index = int(data["index"])
 
@@ -40,9 +39,8 @@ class Computer():
         return int(KeyboardIO.get_input(guess + ": "))
 
     def guess_humans_word(self):
-        response = requests.get("{}/{}".format(guess_word_url, self.guess_history))
-        response.encoding = 'ISO-8859-1'
-        guess = json.loads(response.text)["guess"]
+        data = utils.response_object("{}/{}".format(guess_word_url, self.guess_history))
+        guess = data["guess"]
         match_count = self.get_count_from_human(guess)
         self.guess_history = self.guess_history + guess + str(match_count)
         self.guessed_humans_word = match_count is 5
