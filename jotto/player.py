@@ -1,5 +1,3 @@
-
-import dictionary, guess
 import requests
 import re
 import sys, os
@@ -9,7 +7,6 @@ sys.path.insert(0, '../functions')
 import utils
 from keyboard_io import KeyboardIO
 
-regex = '\w{5}'
 secret_word_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/get_secret_word'
 score_guess_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/score_humans_guess'
 guess_word_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/guess_humans_word'
@@ -20,9 +17,6 @@ class Human():
         self.current_guess = ""
 
     def guess_computers_word(self):
-        self.see_prompt_and_enter_guess()
-
-    def see_prompt_and_enter_guess(self):
         self.current_guess = KeyboardIO.get_input("Your guess: ")
 
 class Computer():
@@ -46,8 +40,7 @@ class Computer():
         return int(KeyboardIO.get_input(guess + ": "))
 
     def guess_humans_word(self):
-        response = requests.get("{}/{}".format(guess_word_url, self.guess_history),
-            headers = { 'Accept-Charset': 'ISO-8859-1'})
+        response = requests.get("{}/{}".format(guess_word_url, self.guess_history))
         response.encoding = 'ISO-8859-1'
         guess = json.loads(response.text)["guess"]
         match_count = self.get_count_from_human(guess)
