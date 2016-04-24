@@ -17,22 +17,13 @@ guess_word_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/gue
 
 class Human():
     def __init__(self):
-        self.guess_a_word("")
+        self.current_guess = ""
 
     def guess_computers_word(self):
-        while True:
-            self.see_prompt_and_enter_guess()
-
-            if self.current_guess.valid():
-                break
-            else:
-                print "Five-letter words from the dictionary only"
-
-    def guess_a_word(self, word):
-        self.current_guess = guess.Guess(word)
+        self.see_prompt_and_enter_guess()
 
     def see_prompt_and_enter_guess(self):
-        self.guess_a_word(KeyboardIO.get_input("Your guess: "))
+        self.current_guess = KeyboardIO.get_input("Your guess: ")
 
 class Computer():
     def __init__(self):
@@ -58,6 +49,7 @@ class Computer():
         response = requests.get("{}/{}".format(guess_word_url, self.guess_history),
             headers = { 'Accept-Charset': 'ISO-8859-1'})
         response.encoding = 'ISO-8859-1'
-        match_count = self.get_count_from_human(response.text)
-        self.guess_history = self.guess_history + json.loads(response.text)["guess"] + str(match_count)
+        guess = json.loads(response.text)["guess"]
+        match_count = self.get_count_from_human(guess)
+        self.guess_history = self.guess_history + guess + str(match_count)
         self.guessed_humans_word = match_count is 5
