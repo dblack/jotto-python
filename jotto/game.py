@@ -1,4 +1,5 @@
 import player
+url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/score_humans_guess/'
 
 class Game():
     def __init__(self):

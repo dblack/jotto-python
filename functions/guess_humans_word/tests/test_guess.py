@@ -20,3 +20,7 @@ def test_loads_filtered_dictionary():
     with patch('__builtin__.open', mock_open(read_data = '\n'.join(dictionary))) as mock_file:
         g = guess.Guess('house3')
         assert g.load_filtered_dictionary() == matches
+
+def test_gets_first_guess():
+    response = requests.get(url)
+    print response.text

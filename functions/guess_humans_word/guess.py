@@ -16,7 +16,11 @@ class Guess():
         return dict(zip(elements[::2], elements[1::2]))
 
     def make_guess(self):
-        return random.choice(self.load_filtered_dictionary())
+        if self.history_string == "":
+            dictionary = utils.load_dictionary()
+        else:
+            dictionary = self.load_filtered_dictionary()
+        return random.choice(dictionary)
 
     def include_word(self, word):
         for guess, count in self.history.items():
