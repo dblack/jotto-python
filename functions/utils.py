@@ -1,3 +1,6 @@
+import requests
+import json
+
 def load_dictionary(filename = 'lib/fives.shuffled'):
     with open(filename) as fh:
         return [word.rstrip() for word in fh.readlines()]
