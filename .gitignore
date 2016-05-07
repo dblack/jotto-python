@@ -45,3 +45,5 @@ admin.env
 
 #Ignore _meta folder
 _meta
+
+.tmp/*
