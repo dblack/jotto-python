@@ -29,11 +29,13 @@ class Computer():
     def choose_a_word(self):
         data = utils.response_object(secret_word_url)
         self.secret_word = data["word"]
+        print self.secret_word
         self.word_index = int(data["index"])
 
     def report_hits(self, guess):
-        response = requests.get("{}/{}/{}".format(score_guess_url, guess, self.word_index))
-        return utils.correct_letter_count(guess, self.secret_word)
+        url = "{}/{}/{}".format(score_guess_url, guess, self.word_index)
+        response = requests.get(url)
+        return int(response.json()['score'])
 
     def get_count_from_human(self, guess):
         return int(KeyboardIO.get_input(guess + ": "))

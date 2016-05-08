@@ -1,3 +1,8 @@
+import sys, os
+here = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(here, "../"))
+sys.path.append(os.path.join(here, "./score_humans_guess/vendored"))
+
 import requests
 import json
 

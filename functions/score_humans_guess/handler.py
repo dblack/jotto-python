@@ -1,12 +1,16 @@
 from __future__ import print_function
+import sys, os
+here = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(here, "../"))
+sys.path.append(os.path.join(here, "../vendored"))
 
 import json
 import logging
 
-from scorer import Scorer
-
 log = logging.getLogger()
 log.setLevel(logging.DEBUG)
+
+from scorer import Scorer
 
 def handler(event, context):
     log.debug("Received event {}".format(json.dumps(event)))

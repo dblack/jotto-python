@@ -47,3 +47,5 @@ admin.env
 _meta
 
 .tmp/*
+
+*vendored*
