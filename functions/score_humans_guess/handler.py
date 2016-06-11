@@ -20,4 +20,5 @@ def handler(event, context):
 
     score = Scorer()
     result = score.score_word(guess, int(index))
+    return "score {}".format(result)
     return { "score": result }
