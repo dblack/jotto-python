@@ -7,7 +7,7 @@ sys.path.insert(0, '../functions')
 import utils
 from keyboard_io import KeyboardIO
 
-base_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev'
+base_url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dblack'
 secret_word_url = base_url + '/get_secret_word'
 score_guess_url = base_url + '/score_humans_guess'
 guess_word_url = base_url + '/guess_humans_word'
@@ -29,7 +29,6 @@ class Computer():
     def choose_a_word(self):
         data = utils.response_object(secret_word_url)
         self.secret_word = data["word"]
-        print self.secret_word
         self.word_index = int(data["index"])
 
     def report_hits(self, guess):

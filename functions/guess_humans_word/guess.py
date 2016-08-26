@@ -10,6 +10,7 @@ class Guess():
     def __init__(self, history_string):
         self.history_string = history_string
         self.history = self.parse_history_string()
+        self.guessed_word = None
 
     def parse_history_string(self):
         elements = [x for x in HISTORY_RE.split(self.history_string) if x]
@@ -20,7 +21,8 @@ class Guess():
             dictionary = utils.load_dictionary()
         else:
             dictionary = self.load_filtered_dictionary()
-        return random.choice(dictionary)
+        self.guessed_word = random.choice(dictionary)
+        return self.guessed_word
 
     def include_word(self, word):
         for guess, count in self.history.items():

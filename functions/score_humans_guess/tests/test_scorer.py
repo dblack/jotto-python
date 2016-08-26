@@ -9,7 +9,7 @@ filedir = os.path.dirname(__file__)
 parentdir = os.path.dirname(filedir)
 
 sys.path.append(sys.path.insert(0, filedir))
-url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/score_humans_guess/'
+url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dblack/score_humans_guess/'
 
 def test_get_score():
     request_url = "{}{}/{}".format(url, 'unsay', str(100))

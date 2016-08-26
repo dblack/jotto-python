@@ -11,7 +11,7 @@ parentdir = os.path.dirname(filedir)
 
 sys.path.append(sys.path.insert(0, filedir))
 
-url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/get_secret_word/'
+url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dblack/get_secret_word/'
 
 with open(parentdir + '/../lib/fives.shuffled') as fh:
     words = [word.rstrip() for word in fh]

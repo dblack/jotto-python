@@ -14,7 +14,7 @@ parentdir = os.path.dirname(filedir)
 
 sys.path.append(sys.path.insert(0, filedir))
 
-url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dev/guess_humans_word/'
+url = 'https://b578bine84.execute-api.us-east-1.amazonaws.com/dblack/guess_humans_word/'
 
 def test_loads_filtered_dictionary():
     with patch('__builtin__.open', mock_open(read_data = '\n'.join(dictionary))) as mock_file:

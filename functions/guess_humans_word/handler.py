@@ -17,4 +17,5 @@ def handler(event, context):
     log.debug("Received event {}".format(json.dumps(event)))
     history_string = event.get("pathHistory", "")
     a_guess = guess.Guess(history_string)
+    log.debug('Computer is guessing: {}'.format(a_guess.guessed_word))
     return { "guess": a_guess.make_guess() }
